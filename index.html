@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="theme-color" content="#F7F5F1">
+  <title>南疆路书 · 6天自驾</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Hero -->
+  <header class="hero">
+    <div class="hero-content">
+      <span class="hero__eyebrow">2026 · 五月</span>
+      <h1 class="hero-title">帕米尔之旅</h1>
+      <p class="hero-subtitle">喀什 · 白沙湖 · 塔县 · 红其拉甫 · 慕士塔格</p>
+    </div>
+  </header>
+
+  <!-- Stats row -->
+  <section class="stats-bar">
+    <div class="stat-item">
+      <span class="stat-value">6</span>
+      <span class="stat-label">天</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-value">1,225</span>
+      <span class="stat-label">公里</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-value">2,500</span>
+      <span class="stat-label">人均 ¥</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-value">3</span>
+      <span class="stat-label">同行</span>
+    </div>
+  </section>
+
+  <main class="container">
+
+    <!-- 路线地图 -->
+    <section class="section">
+      <h2 class="section-title">路线地图</h2>
+      <div class="route-map">
+        <div class="route-map__legend">
+          <span class="route-map__dot route-map__dot--d3"></span><span>D3</span>
+          <span class="route-map__dot route-map__dot--d4"></span><span>D4</span>
+          <span class="route-map__dot route-map__dot--d5"></span><span>D5</span>
+          <span class="route-map__dot route-map__dot--d6"></span><span>D6</span>
+        </div>
+
+        <svg class="route-map__svg" viewBox="0 0 400 680" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="南疆6天自驾路线地图（按高德地图真实坐标）">
+          <!-- 浅色背景 -->
+          <rect width="400" height="680" fill="#FBF8F3"/>
+
+          <!-- 极淡山脊暗示 -->
+          <g fill="#E8DFD0" opacity="0.55">
+            <path d="M0,0 L0,40 L60,32 L140,40 L230,28 L320,38 L400,30 L400,0 Z"/>
+            <path d="M0,680 L0,650 L80,642 L200,654 L300,644 L400,652 L400,680 Z"/>
+          </g>
+          <g fill="#EFE6D6" opacity="0.55">
+            <path d="M0,680 L0,200 L22,230 L12,310 L30,400 L18,500 L28,600 L18,680 Z"/>
+          </g>
+
+          <!-- 河谷暗示 -->
+          <g stroke="#D9CDB9" stroke-width="1" fill="none" opacity="0.55">
+            <path d="M190,230 Q200,330 215,430 T238,625"/>
+          </g>
+
+          <!-- 经纬网格 -->
+          <g stroke="#D9CDB9" stroke-width="0.5" fill="none" opacity="0.65" stroke-dasharray="2 3">
+            <line x1="0" y1="153" x2="400" y2="153"/>
+            <line x1="0" y1="337" x2="400" y2="337"/>
+            <line x1="0" y1="522" x2="400" y2="522"/>
+          </g>
+          <g font-family="-apple-system, 'PingFang SC', sans-serif" font-size="8" fill="#B5A894">
+            <text x="4" y="151">39°N</text>
+            <text x="4" y="335">38°N</text>
+            <text x="4" y="520">37°N</text>
+          </g>
+
+          <!-- === Routes === -->
+          <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M350,66 L224,157 L270,200 L193,228" stroke="#F4B678" stroke-width="3"/>
+            <path d="M193,228 L196,288 L214,382 L225,430" stroke="#F28B4F" stroke-width="3"/>
+            <path d="M225,430 L245,533 L257,629 Q245,540 240,490 Q255,470 311,457 L344,479 Q290,445 225,430"
+                  stroke="#D9501B" stroke-width="3"/>
+            <path d="M225,430 L206,322 L193,228 L52,82 L350,66"
+                  stroke="#4A90D9" stroke-width="3" stroke-dasharray="6 5"/>
+          </g>
+
+          <!-- === Pins === -->
+          <g font-family="-apple-system, 'PingFang SC', sans-serif" font-size="11" font-weight="500" fill="#1C1C1E">
+
+            <g>
+              <circle cx="350" cy="66" r="7" fill="#FF7A45" stroke="#FFF" stroke-width="2"/>
+              <text x="340" y="62" font-size="13" font-weight="700" text-anchor="end">喀什</text>
+              <text x="340" y="74" fill="#8E8175" font-size="9" text-anchor="end">起点 · 终点</text>
+            </g>
+
+            <g>
+              <circle cx="52" cy="82" r="4" fill="#4A90D9" stroke="#FFF" stroke-width="1.5"/>
+              <text x="62" y="79">木吉火山</text>
+              <text x="62" y="90" fill="#8E8175" font-size="9">D6 · 火山口</text>
+            </g>
+
+            <g>
+              <circle cx="224" cy="157" r="4" fill="#F4B678" stroke="#FFF" stroke-width="1.5"/>
+              <text x="234" y="154">红山谷</text>
+              <text x="234" y="165" fill="#8E8175" font-size="9">D3 · 丹霞</text>
+            </g>
+
+            <g>
+              <circle cx="270" cy="200" r="4" fill="#F4B678" stroke="#FFF" stroke-width="1.5"/>
+              <text x="280" y="197">奥依塔克冰川</text>
+              <text x="280" y="208" fill="#8E8175" font-size="9">D3 · 雪峰</text>
+            </g>
+
+            <g>
+              <circle cx="193" cy="228" r="5" fill="#F28B4F" stroke="#FFF" stroke-width="2"/>
+              <text x="185" y="225" font-size="12" font-weight="600" text-anchor="end">白沙湖</text>
+              <text x="185" y="237" fill="#8E8175" font-size="9" text-anchor="end">D3 · 宿</text>
+            </g>
+
+            <g>
+              <circle cx="196" cy="288" r="4" fill="#F28B4F" stroke="#FFF" stroke-width="1.5"/>
+              <text x="188" y="285" text-anchor="end">喀拉库勒湖</text>
+              <text x="188" y="296" fill="#8E8175" font-size="9" text-anchor="end">D4</text>
+            </g>
+
+            <g>
+              <circle cx="206" cy="322" r="4" fill="#4A90D9" stroke="#FFF" stroke-width="1.5"/>
+              <text x="198" y="319" text-anchor="end">慕士塔格</text>
+              <text x="198" y="330" fill="#8E8175" font-size="9" text-anchor="end">D6 · 7546m</text>
+            </g>
+
+            <g>
+              <circle cx="214" cy="382" r="4" fill="#F28B4F" stroke="#FFF" stroke-width="1.5"/>
+              <text x="206" y="379" text-anchor="end">塔合曼湿地</text>
+              <text x="206" y="390" fill="#8E8175" font-size="9" text-anchor="end">D4</text>
+            </g>
+
+            <g>
+              <circle cx="225" cy="430" r="7" fill="#FF7A45" stroke="#FFF" stroke-width="2"/>
+              <text x="213" y="426" font-size="13" font-weight="700" text-anchor="end">塔县</text>
+              <text x="213" y="438" fill="#8E8175" font-size="9" text-anchor="end">D4-D5 宿</text>
+            </g>
+
+            <g>
+              <circle cx="245" cy="533" r="4" fill="#D9501B" stroke="#FFF" stroke-width="1.5"/>
+              <text x="255" y="530">托格伦夏</text>
+              <text x="255" y="541" fill="#8E8175" font-size="9">D5 · 途经</text>
+            </g>
+
+            <g>
+              <circle cx="257" cy="629" r="4.5" fill="#D9501B" stroke="#FFF" stroke-width="1.5"/>
+              <text x="267" y="626">红其拉甫</text>
+              <text x="267" y="637" fill="#8E8175" font-size="9">D5 · 中国最西国门</text>
+            </g>
+
+            <g>
+              <circle cx="311" cy="457" r="4" fill="#D9501B" stroke="#FFF" stroke-width="1.5"/>
+              <text x="321" y="454">盘龙古道</text>
+              <text x="321" y="465" fill="#8E8175" font-size="9">D5 · 4200m</text>
+            </g>
+
+            <g>
+              <circle cx="344" cy="479" r="4" fill="#D9501B" stroke="#FFF" stroke-width="1.5"/>
+              <text x="354" y="476">班迪尔蓝湖</text>
+              <text x="354" y="487" fill="#8E8175" font-size="9">D5</text>
+            </g>
+
+          </g>
+
+          <!-- === Segment distance + time labels === -->
+          <g font-family="-apple-system, 'PingFang SC', sans-serif" font-size="9.5" font-weight="600" text-anchor="middle">
+            <text x="291" y="114" fill="#D9501B">100km · 1h30</text>
+            <text x="247" y="183" fill="#D9501B">50km · 50min</text>
+            <text x="232" y="217" fill="#D9501B">110km · 1h40</text>
+
+            <text x="156" y="262" fill="#D9501B">40km · 50min</text>
+            <text x="153" y="339" fill="#D9501B">65km · 1h10</text>
+            <text x="165" y="410" fill="#D9501B">30km · 30min</text>
+
+            <text x="189" y="529" fill="#D9501B">125km · 1h50</text>
+            <text x="180" y="571" fill="#D9501B">140km · 2h</text>
+            <text x="333" y="471" fill="#D9501B">70km · 1h30</text>
+            <text x="289" y="449" fill="#D9501B">60km · 50min</text>
+
+            <text x="129" y="379" fill="#2E6CB3">65km · 1h</text>
+            <text x="133" y="187" fill="#2E6CB3">140km · 2h20</text>
+            <text x="196" y="61" fill="#2E6CB3">230km · 3h52</text>
+          </g>
+
+          <!-- 比例尺 -->
+          <g transform="translate(20,645)" font-family="-apple-system, 'PingFang SC', sans-serif">
+            <rect x="0" y="0" width="80" height="2" fill="#B5A894"/>
+            <line x1="0" y1="-2" x2="0" y2="4" stroke="#B5A894" stroke-width="0.8"/>
+            <line x1="40" y1="-2" x2="40" y2="4" stroke="#B5A894" stroke-width="0.8"/>
+            <line x1="80" y1="-2" x2="80" y2="4" stroke="#B5A894" stroke-width="0.8"/>
+            <text x="0" y="16" fill="#B5A894" font-size="8">0</text>
+            <text x="40" y="16" fill="#B5A894" font-size="8" text-anchor="middle">50</text>
+            <text x="80" y="16" fill="#B5A894" font-size="8" text-anchor="middle">100 km</text>
+          </g>
+        </svg>
+
+        <p class="route-map__hint">沿帕米尔高原由北向南深入，再环线返回 · 单程 ~1,200 km</p>
+      </div>
+
+      <!-- 路段明细 -->
+      <div class="segments">
+        <details class="segments__day" open>
+          <summary class="segments__summary">
+            <span class="segments__badge segments__badge--d3">D3</span>
+            <span class="segments__title">帕米尔之门</span>
+            <span class="segments__total">260 km · 4h</span>
+          </summary>
+          <div class="segments__row">
+            <span class="segments__from">喀什</span>
+            <span class="segments__arrow">→</span>
+            <span class="segments__to">红山谷</span>
+            <span class="segments__meta">100 km · 1h30</span>
+          </div>
+          <div class="segments__row">
+            <span class="segments__from">红山谷</span>
+            <span class="segments__arrow">→</span>
+            <span class="segments__to">奥依塔克冰川</span>
+            <span class="segments__meta">50 km · 50min</span>
+          </div>
+          <div class="segments__row">
+            <span class="segments__from">奥依塔克冰川</span>
+            <span class="segments__arrow">→</span>
+            <span class="segments__to">白沙湖（布伦口）</span>
+            <span class="segments__meta">110 km · 1h40</span>
+          </div>
+        </details>
+
+        <details class="segments__day" open>
+          <summary class="segments__summary">
+            <span class="segments__badge segments__badge--d4">D4</span>
+            <span class="segments__title">高原明珠</span>
+            <span class="segments__total">135 km · 2h30</span>
+          </summary>
+          <div class="segments__row">
+            <span class="segments__from">白沙湖</span>
+            <span class="segments__arrow">→</span>
+            <span class="segments__to">喀拉库勒湖</span>
+            <span class="segments__meta">40 km · 50min</span>
+          </div>
+          <div class="segments__row">
+            <span class="segments__from">喀拉库勒湖</span>
+            <span class="segments__arrow">→</span>
+            <span class="segments__to">塔合曼湿地</span>
+            <span class="segments__meta">65 km · 1h10</span>
+          </div>
+          <div class="segments__row">
+            <span class="segments__from">塔合曼湿地</span>
+            <span class="segments__arrow">→</span>
+            <span class="segments__to">塔县</span>
+            <span class="segments__meta">30 km · 30min</span>
+          </div>
+        </details>
+
+        <details class="segments__day" open>
+          <summary class="segments__summary">
+            <span class="segments__badge segments__badge--d5">D5</span>
+            <span class="segments__title">国门与天路（环线）</span>
+            <span class="segments__total">395 km · 6h10</span>
+          </summary>
+          <div class="segments__row">
+            <span class="segments__from">塔县</span>
+            <span class="segments__arrow">→</span>
+            <span class="segments__to">红其拉甫（经托格伦夏）</span>
+            <span class="segments__meta">125 km · 1h50</span>
+          </div>
+          <div class="segments__row">
+            <span class="segments__from">红其拉甫</span>
+            <span class="segments__arrow">→</span>
+            <span class="segments__to">盘龙古道（经瓦恰）</span>
+            <span class="segments__meta">140 km · 2h</span>
+          </div>
+          <div class="segments__row">
+            <span class="segments__from">盘龙古道</span>
+            <span class="segments__arrow">→</span>
+            <span class="segments__to">班迪尔蓝湖</span>
+            <span class="segments__meta">70 km · 1h30</span>
+          </div>
+          <div class="segments__row">
+            <span class="segments__from">班迪尔蓝湖</span>
+            <span class="segments__arrow">→</span>
+            <span class="segments__to">塔县</span>
+            <span class="segments__meta">60 km · 50min</span>
+          </div>
+        </details>
+
+        <details class="segments__day" open>
+          <summary class="segments__summary">
+            <span class="segments__badge segments__badge--d6">D6</span>
+            <span class="segments__title">冰川与火山</span>
+            <span class="segments__total">435 km · 7h12</span>
+          </summary>
+          <div class="segments__row">
+            <span class="segments__from">塔县</span>
+            <span class="segments__arrow">→</span>
+            <span class="segments__to">慕士塔格冰川</span>
+            <span class="segments__meta">65 km · 1h</span>
+          </div>
+          <div class="segments__row">
+            <span class="segments__from">慕士塔格</span>
+            <span class="segments__arrow">→</span>
+            <span class="segments__to">木吉火山口</span>
+            <span class="segments__meta">140 km · 2h20</span>
+          </div>
+          <div class="segments__row">
+            <span class="segments__from">木吉火山</span>
+            <span class="segments__arrow">→</span>
+            <span class="segments__to">喀什</span>
+            <span class="segments__meta">230 km · 3h52</span>
+          </div>
+        </details>
+
+        <p class="segments__note">时间为纯驾驶时长（不含景点停留与边防安检）· D6 全程 7h12 较长，建议早 7 点从塔县出发</p>
+      </div>
+    </section>
+
+    <!-- 6-Day Itinerary — iOS Inset Grouped List -->
+    <section class="section">
+      <h2 class="section-title">行程总览</h2>
+
+      <div class="itinerary">
+        <a href="pages/day1.html" class="day-card">
+          <div class="day-badge">D1</div>
+          <div class="day-info">
+            <h3 class="day-title">落地喀什</h3>
+            <p class="day-route">机场 → 喀什古城</p>
+          </div>
+          <div class="day-distance">市内</div>
+        </a>
+
+        <a href="pages/day2.html" class="day-card">
+          <div class="day-badge">D2</div>
+          <div class="day-info">
+            <h3 class="day-title">喀什深度游</h3>
+            <p class="day-route">艾提尕尔 · 老茶馆 · 夜市</p>
+          </div>
+          <div class="day-distance">市内</div>
+        </a>
+
+        <a href="pages/day3.html" class="day-card">
+          <div class="day-badge">D3</div>
+          <div class="day-info">
+            <h3 class="day-title">帕米尔之门</h3>
+            <p class="day-route">喀什 → 红山谷 → 奥依塔克冰川 → 白沙湖</p>
+          </div>
+          <div class="day-distance">260 km</div>
+        </a>
+
+        <a href="pages/day4.html" class="day-card">
+          <div class="day-badge">D4</div>
+          <div class="day-info">
+            <h3 class="day-title">高原明珠</h3>
+            <p class="day-route">白沙湖 → 喀拉库勒湖 → 塔合曼湿地 → 塔县</p>
+          </div>
+          <div class="day-distance">135 km</div>
+        </a>
+
+        <a href="pages/day5.html" class="day-card">
+          <div class="day-badge">D5</div>
+          <div class="day-info">
+            <h3 class="day-title">国门与天路</h3>
+            <p class="day-route">塔县 → 托格伦夏 → 红其拉甫 → 盘龙古道 → 班迪尔蓝湖 → 塔县</p>
+          </div>
+          <div class="day-distance">395 km</div>
+        </a>
+
+        <a href="pages/day6.html" class="day-card">
+          <div class="day-badge">D6</div>
+          <div class="day-info">
+            <h3 class="day-title">冰川与火山</h3>
+            <p class="day-route">塔县 → 慕士塔格冰川 → 木吉火山 → 喀什</p>
+          </div>
+          <div class="day-distance">435 km</div>
+        </a>
+      </div>
+    </section>
+
+    <!-- Quick Navigation — SF symbol tiles -->
+    <section class="section">
+      <h2 class="section-title">实用攻略</h2>
+      <div class="nav-grid">
+        <a href="pages/food.html" class="nav-card nav-card--food">
+          <span class="nav-icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M6 2v7a3 3 0 0 0 2 2.8V22h2V11.8A3 3 0 0 0 12 9V2h-2v6H9V2H7v6H6Z"/>
+              <path d="M16 2c-1.5 0-2.5 1.8-2.5 4.5V10a2 2 0 0 0 2 2V22h2V12a2 2 0 0 0 2-2V6.5C19.5 3.8 18.5 2 17 2Z"/>
+            </svg>
+          </span>
+          <span class="nav-label">美食地图</span>
+          <span class="nav-hint">必吃老店 · 本地特色</span>
+        </a>
+        <a href="pages/driving.html" class="nav-card nav-card--driving">
+          <span class="nav-icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 13l1.8-5A2 2 0 0 1 8.7 6.5h6.6A2 2 0 0 1 17.2 8L19 13"/>
+              <rect x="3" y="13" width="18" height="5" rx="1.5"/>
+              <circle cx="7.5" cy="18.5" r="1.5"/>
+              <circle cx="16.5" cy="18.5" r="1.5"/>
+            </svg>
+          </span>
+          <span class="nav-label">自驾攻略</span>
+          <span class="nav-hint">租车 · 路况 · 加油</span>
+        </a>
+        <a href="pages/budget.html" class="nav-card nav-card--budget">
+          <span class="nav-icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="9"/>
+              <path d="M8 9h6a2 2 0 1 1 0 4h-4l4 4"/>
+            </svg>
+          </span>
+          <span class="nav-label">预算明细</span>
+          <span class="nav-hint">3 人全程花费清单</span>
+        </a>
+        <a href="pages/tips.html" class="nav-card nav-card--tips">
+          <span class="nav-icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2 1.5 21h21Z"/>
+              <path d="M12 9v5"/>
+              <path d="M12 17.5v.01"/>
+            </svg>
+          </span>
+          <span class="nav-label">避坑指南</span>
+          <span class="nav-hint">高反 · 限速 · 防骗</span>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p class="footer-brand">南疆自驾路书 · 2026 年 5 月</p>
+    <p class="footer-note">本路书所有数据仅供参考，实际路况与价格请以出行时为准</p>
+  </footer>
+
+  <!-- Bottom Tab Bar -->
+  <nav class="bottom-nav">
+    <a href="index.html" class="bottom-nav__item bottom-nav__item--home active">
+      <span>首页</span>
+    </a>
+    <a href="pages/food.html" class="bottom-nav__item bottom-nav__item--food">
+      <span>美食</span>
+    </a>
+    <a href="pages/driving.html" class="bottom-nav__item bottom-nav__item--driving">
+      <span>自驾</span>
+    </a>
+    <a href="pages/budget.html" class="bottom-nav__item bottom-nav__item--budget">
+      <span>预算</span>
+    </a>
+    <a href="pages/tips.html" class="bottom-nav__item bottom-nav__item--tips">
+      <span>避坑</span>
+    </a>
+  </nav>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

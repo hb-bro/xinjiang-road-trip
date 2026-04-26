@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <title>D3 帕米尔之门 - 南疆自驾路书</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <!-- iOS Nav Bar -->
+  <nav class="nav-bar">
+    <a href="../index.html" class="nav-bar__back">首页</a>
+    <span class="nav-bar__title">D3 帕米尔之门</span>
+  </nav>
+
+  <!-- Page Hero -->
+  <section class="page-hero">
+    <p class="page-hero__day">Day 3 / 6</p>
+    <h1 class="page-hero__title">帕米尔之门</h1>
+    <p class="page-hero__route">
+      喀什 <span class="page-hero__route-arrow">&rarr;</span>
+      红山谷 <span class="page-hero__route-arrow">&rarr;</span>
+      奥依塔克冰川 <span class="page-hero__route-arrow">&rarr;</span>
+      白沙湖
+    </p>
+  </section>
+
+  <main class="container">
+
+    <!-- Route Info -->
+    <div class="route-info">
+      <h2 class="route-info__title">路线概况</h2>
+      <div class="route-info__grid">
+        <div class="route-info__item">
+          <span class="route-info__label">总里程</span>
+          <span class="route-info__value">~280km</span>
+        </div>
+        <div class="route-info__item">
+          <span class="route-info__label">驾车时间</span>
+          <span class="route-info__value">~5h</span>
+        </div>
+        <div class="route-info__item">
+          <span class="route-info__label">海拔变化</span>
+          <span class="route-info__value">1300-3300m</span>
+        </div>
+        <div class="route-info__item">
+          <span class="route-info__label">人均预算</span>
+          <span class="route-info__value">~260元</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Key Tip -->
+    <div class="tip-box tip-box--info">
+      <span class="tip-box__title">今日亮点</span>
+      今天正式踏上中巴公路（G314国道），从喀什一路向西，海拔从1300m攀升至3300m。沿途将经历红色丹霞、冰川雪峰、银白沙山与碧蓝湖水，景观极其丰富。
+    </div>
+
+    <!-- Timeline -->
+    <section class="section">
+      <h2 class="section__title">行程安排</h2>
+
+      <div class="timeline">
+
+        <!-- Morning -->
+        <div class="timeline__step">
+          <span class="timeline__time">08:00 出发</span>
+          <h3 class="timeline__title">早起出发，走G314国道</h3>
+          <p class="timeline__desc">北京时间8:00从喀什出发，沿中巴公路（G314）一路向西南方向行驶。建议在喀什加满油，路上加油站很少。</p>
+        </div>
+
+        <!-- Stop 1 -->
+        <div class="timeline__step timeline__step--highlight">
+          <span class="timeline__time">约10:00 抵达 | 距喀什约120km</span>
+          <h3 class="timeline__title">红山谷 / 红山石林</h3>
+          <p class="timeline__desc">红色砂岩地貌，仿佛置身火星表面。路边即可观赏，无需购票。上午光线最适合拍照，建议游览约1小时。</p>
+        </div>
+
+        <!-- Stop 2 -->
+        <div class="timeline__step timeline__step--highlight">
+          <span class="timeline__time">约11:30 抵达 | 距喀什约160km</span>
+          <h3 class="timeline__title">奥依塔克冰川公园</h3>
+          <p class="timeline__desc">可近距离观赏冰川，景区内有栈道，不算很累。海拔约3000m，开始注意高反反应。建议游览1.5-2小时。</p>
+        </div>
+
+        <!-- Stop 3 -->
+        <div class="timeline__step timeline__step--highlight">
+          <span class="timeline__time">约15:00 抵达 | 距喀什约200km</span>
+          <h3 class="timeline__title">白沙湖 / 白沙山</h3>
+          <p class="timeline__desc">银白色沙山搭配碧蓝湖水，极致色彩对比。可以体验滑沙（注意保护环境）。日落时分景色最美，建议游览1-1.5小时。</p>
+        </div>
+
+        <!-- Arrive -->
+        <div class="timeline__step">
+          <span class="timeline__time">约17:00 入住</span>
+          <h3 class="timeline__title">白沙湖附近住宿</h3>
+          <p class="timeline__desc">入住白沙湖附近毡房或民宿，条件有限但体验感强。早点休息，为明天继续向帕米尔高原深处进发做准备。</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Attractions Detail -->
+    <section class="section">
+      <h2 class="section__title">景点详情</h2>
+
+      <!-- 红山谷 -->
+      <div class="attraction-card">
+        <div class="attraction-card__body">
+          <h3 class="attraction-card__name">红山谷 / 红山石林</h3>
+          <div class="attraction-card__detail attraction-card__detail--ticket">免费，路边即可观赏</div>
+          <div class="attraction-card__detail attraction-card__detail--time">建议游览 1小时</div>
+          <div class="attraction-card__detail attraction-card__detail--tip">最佳拍照时间：上午光线好</div>
+          <p class="attraction-card__desc">
+            红色砂岩经过千万年风蚀形成的独特地貌，色彩艳丽，造型奇特，像是地球上的火星景观。车停路边即可欣赏，不需要专门进入景区。
+          </p>
+          <div class="flex flex-wrap gap-2 mt-4">
+            <span class="tag tag--success">免费</span>
+            <span class="tag tag--gold">拍照圣地</span>
+            <span class="tag tag--default">路边可观</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 奥依塔克冰川 -->
+      <div class="attraction-card">
+        <div class="attraction-card__body">
+          <h3 class="attraction-card__name">奥依塔克冰川公园</h3>
+          <div class="attraction-card__detail attraction-card__detail--ticket">门票 60元/人</div>
+          <div class="attraction-card__detail attraction-card__detail--time">建议游览 1.5-2小时</div>
+          <div class="attraction-card__detail attraction-card__detail--tip">海拔约3000m，注意高反</div>
+          <div class="attraction-card__detail attraction-card__detail--note">景区内有栈道，步行不算很累</div>
+          <p class="attraction-card__desc">
+            可以近距离观赏壮观的冰川景观，景区内修建了栈道，方便游客行走。海拔已经到了3000m左右，走路不要太快，注意自身高反反应。
+          </p>
+          <div class="flex flex-wrap gap-2 mt-4">
+            <span class="tag tag--ochre">60元</span>
+            <span class="tag tag--sky">冰川</span>
+            <span class="tag tag--warning">注意高反</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 白沙湖 -->
+      <div class="attraction-card">
+        <div class="attraction-card__body">
+          <h3 class="attraction-card__name">白沙湖 / 白沙山</h3>
+          <div class="attraction-card__detail attraction-card__detail--ticket">门票免费 / 景区30元</div>
+          <div class="attraction-card__detail attraction-card__detail--time">建议游览 1-1.5小时</div>
+          <div class="attraction-card__detail attraction-card__detail--tip">日落时分最美</div>
+          <div class="attraction-card__detail attraction-card__detail--note">可以滑沙，注意保护环境</div>
+          <p class="attraction-card__desc">
+            白沙山洁白如银，湖水碧蓝如玉，二者形成极致的色彩对比，是中巴公路上最令人惊叹的景点之一。傍晚日落时分光影变幻，最为动人。
+          </p>
+          <div class="flex flex-wrap gap-2 mt-4">
+            <span class="tag tag--ochre">30元</span>
+            <span class="tag tag--gold">日落必看</span>
+            <span class="tag tag--sky">湖泊</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Food -->
+    <section class="section">
+      <h2 class="section__title">今日美食</h2>
+
+      <div class="food-card">
+        <div class="food-card__body">
+          <h4 class="food-card__name">午餐：路边小饭馆</h4>
+          <p class="food-card__shop">拌面 / 抓饭</p>
+          <p class="food-card__price">人均 20-30元</p>
+          <div class="food-card__tags">
+            <span class="tag tag--default">路餐</span>
+            <span class="tag tag--gold">实惠</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="food-card">
+        <div class="food-card__body">
+          <h4 class="food-card__name">晚餐：住宿点简餐</h4>
+          <p class="food-card__shop">毡房/民宿提供简餐</p>
+          <p class="food-card__price">人均 30-40元</p>
+          <div class="food-card__tags">
+            <span class="tag tag--default">简餐</span>
+            <span class="tag tag--warning">选择有限</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="tip-box tip-box--info">
+        <span class="tip-box__title">饮食建议</span>
+        建议从喀什出发前多带些干粮和水果，路上餐饮选择非常有限，且品质参差不齐。矿泉水也要多备几瓶。
+      </div>
+    </section>
+
+    <!-- Hotel -->
+    <section class="section">
+      <h2 class="section__title">住宿推荐</h2>
+
+      <div class="hotel-card">
+        <div class="hotel-card__body">
+          <h4 class="hotel-card__name">白沙湖毡房/民宿</h4>
+          <p class="hotel-card__location">白沙湖景区附近</p>
+          <p class="hotel-card__price">150-200元 <span class="hotel-card__price-unit">/晚</span></p>
+          <div class="hotel-card__amenities">
+            <span>体验感强</span>
+            <span>靠近景区</span>
+            <span>条件一般</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hotel-card">
+        <div class="hotel-card__body">
+          <h4 class="hotel-card__name">盖孜检查站附近旅馆</h4>
+          <p class="hotel-card__location">盖孜检查站附近</p>
+          <p class="hotel-card__price">100-150元 <span class="hotel-card__price-unit">/晚</span></p>
+          <div class="hotel-card__amenities">
+            <span>价格便宜</span>
+            <span>条件一般</span>
+            <span>基本住宿</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="tip-box tip-box--warning">
+        <span class="tip-box__title">住宿提醒</span>
+        这一带住宿条件有限，请降低期望值。建议自带睡袋内胆和一次性床单，可以提升舒适度。
+      </div>
+    </section>
+
+    <!-- Budget -->
+    <section class="section">
+      <h2 class="section__title">今日预算（人均）</h2>
+
+      <div class="expense-table-wrapper">
+        <table class="expense-table">
+          <thead>
+            <tr>
+              <th>项目</th>
+              <th>明细</th>
+              <th>人均费用</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>油费</td>
+              <td>280km，约0.6元/km，3人均摊</td>
+              <td class="expense-table__amount">~50元</td>
+            </tr>
+            <tr>
+              <td>门票</td>
+              <td>奥依塔克60元 + 白沙湖30元</td>
+              <td class="expense-table__amount">90元</td>
+            </tr>
+            <tr>
+              <td>餐饮</td>
+              <td>午餐25 + 晚餐35</td>
+              <td class="expense-table__amount">~60元</td>
+            </tr>
+            <tr>
+              <td>住宿</td>
+              <td>毡房/民宿，约180元/间，3人均摊</td>
+              <td class="expense-table__amount">~60元</td>
+            </tr>
+            <tr class="total-row">
+              <td colspan="2">今日合计</td>
+              <td class="expense-table__amount">~260元</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Tips -->
+    <section class="section">
+      <h2 class="section__title">注意事项</h2>
+
+      <div class="tip-box tip-box--danger">
+        <span class="tip-box__title">边防证必备</span>
+        盖孜检查站需要边防证 + 身份证，务必提前办好。没有边防证将无法通过检查站继续前行。
+      </div>
+
+      <div class="tip-box tip-box--warning">
+        <span class="tip-box__title">高反预警</span>
+        今天海拔从1300m一路升至3300m，上升幅度大。动作放慢，多喝水，不要剧烈运动。如有严重头痛、呕吐症状请及时下撤。
+      </div>
+
+      <div class="tip-box tip-box--warning">
+        <span class="tip-box__title">加油提醒</span>
+        出喀什前一定加满油！G314沿途加油站非常少，且部分加油站可能无油或不对外地车辆开放。
+      </div>
+
+      <div class="tip-box tip-box--info">
+        <span class="tip-box__title">信号与导航</span>
+        手机信号断断续续，部分路段完全无信号。请提前下载离线地图（高德/百度均支持离线包下载），避免导航中断。
+      </div>
+    </section>
+
+    <!-- Day Navigation -->
+    <nav class="day-nav">
+      <a href="day2.html" class="day-nav__link day-nav__link--prev">
+        <span class="day-nav__label">上一天</span>
+        <span class="day-nav__title">D2 喀什深度游</span>
+      </a>
+      <a href="day4.html" class="day-nav__link day-nav__link--next">
+        <span class="day-nav__label">下一天</span>
+        <span class="day-nav__title">D4 冰山之父</span>
+      </a>
+    </nav>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <p class="site-footer__brand">南疆自驾路书 &middot; 2026年5月</p>
+    <div class="site-footer__divider"></div>
+    <p>本路书所有数据仅供参考，实际路况与价格请以出行时为准</p>
+  </footer>
+
+  <!-- Bottom Fixed Navigation Bar -->
+  <nav class="bottom-nav">
+    <a href="../index.html" class="bottom-nav-item active">
+      <span class="bottom-nav-icon">&#127968;</span>
+      <span class="bottom-nav-text">首页</span>
+    </a>
+    <a href="food.html" class="bottom-nav-item">
+      <span class="bottom-nav-icon">&#127836;</span>
+      <span class="bottom-nav-text">美食</span>
+    </a>
+    <a href="driving.html" class="bottom-nav-item">
+      <span class="bottom-nav-icon">&#128663;</span>
+      <span class="bottom-nav-text">自驾</span>
+    </a>
+    <a href="budget.html" class="bottom-nav-item">
+      <span class="bottom-nav-icon">&#128176;</span>
+      <span class="bottom-nav-text">预算</span>
+    </a>
+    <a href="tips.html" class="bottom-nav-item">
+      <span class="bottom-nav-icon">&#9888;&#65039;</span>
+      <span class="bottom-nav-text">避坑</span>
+    </a>
+  </nav>
+
+  <script src="../js/app.js"></script>
+</body>
+</html>

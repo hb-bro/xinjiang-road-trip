@@ -1,0 +1,1317 @@
+/* ============================================================
+   南疆路书 · iOS Minimal (v2)
+   精简 · 统一 Inset Grouped List · 单一暖橙强调色
+   ============================================================ */
+
+/* ----------------------------------------------------------
+   0. Design Tokens
+   ---------------------------------------------------------- */
+:root {
+  /* Single accent */
+  --orange:        #FF7A45;   /* primary */
+  --orange-soft:   #FFE2D0;
+  --orange-bg:     #FFF3EB;
+  --orange-deep:   #D9501B;
+  --orange-ink:    #8A3A14;
+
+  /* Subtle secondaries (only for small contextual pins, not UI surfaces) */
+  --blue-pin:      #4A90D9;
+  --blue-pin-soft: #E4EEF8;
+
+  /* iOS system neutrals */
+  --label:         #1C1C1E;
+  --label-2:       rgba(60, 60, 67, 0.60);
+  --label-3:       rgba(60, 60, 67, 0.36);
+  --label-4:       rgba(60, 60, 67, 0.18);
+
+  --bg:            #F7F5F1;
+  --bg-elev:       #FFFFFF;
+  --bg-grouped:    #EFEBE3;
+  --separator:     rgba(60, 60, 67, 0.10);
+  --fill-1:        rgba(0, 0, 0, 0.04);
+
+  /* Typography */
+  --font-body: -apple-system, BlinkMacSystemFont, "SF Pro Text",
+               "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei",
+               "Noto Sans SC", "Helvetica Neue", sans-serif;
+  --font-display: -apple-system, BlinkMacSystemFont, "SF Pro Display",
+                  "PingFang SC", var(--font-body);
+  --font-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+
+  --t-large:    2.125rem;  /* 34 */
+  --t-t1:       1.75rem;   /* 28 */
+  --t-t2:       1.375rem;  /* 22 */
+  --t-t3:       1.25rem;   /* 20 */
+  --t-headline: 1.0625rem; /* 17 */
+  --t-body:     1.0625rem;
+  --t-callout:  1rem;      /* 16 */
+  --t-sub:      0.9375rem; /* 15 */
+  --t-foot:     0.8125rem; /* 13 */
+  --t-cap:      0.75rem;   /* 12 */
+  --t-cap2:     0.6875rem; /* 11 */
+
+  --r-sm:   8px;
+  --r-md:   12px;
+  --r-lg:   14px;
+  --r-xl:   18px;
+  --r-pill: 999px;
+
+  --shadow-1: 0 1px 2px rgba(28,28,30,0.04);
+
+  --sp-1: 4px;  --sp-2: 8px;  --sp-3: 12px; --sp-4: 16px;
+  --sp-5: 20px; --sp-6: 24px; --sp-7: 32px; --sp-8: 40px;
+
+  --ease: cubic-bezier(0.32, 0.72, 0, 1);
+  --dur-1: 160ms;
+  --dur-2: 260ms;
+
+  --sa-top:    env(safe-area-inset-top, 0px);
+  --sa-bottom: env(safe-area-inset-bottom, 0px);
+  --tabbar-h:  58px;
+  --navbar-h:  44px;
+
+  /* legacy aliases */
+  --color-text: var(--label);
+  --color-text-light: var(--label-2);
+  --color-bg: var(--bg);
+  --color-white: #FFF;
+  --color-border: var(--separator);
+  --color-gold: #C28D2A;
+  --color-ochre: var(--orange-deep);
+  --color-sky: var(--blue-pin);
+  --color-sand: var(--bg-grouped);
+  --color-danger: #D93F3F;
+  --color-warning: #D88A2A;
+  --color-info: var(--blue-pin);
+  --color-success: #3F9A4F;
+}
+
+/* ----------------------------------------------------------
+   1. Base
+   ---------------------------------------------------------- */
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  -webkit-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: var(--t-body);
+  line-height: 1.47;
+  color: var(--label);
+  background: var(--bg);
+  min-height: 100vh;
+  padding-bottom: calc(var(--tabbar-h) + var(--sa-bottom) + 8px);
+  overscroll-behavior-y: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+a { color: var(--orange-deep); text-decoration: none; }
+a:active { opacity: 0.55; }
+
+img { max-width: 100%; display: block; }
+h1, h2, h3, h4, h5 { font-family: var(--font-display); margin: 0; letter-spacing: -0.012em; color: var(--label); }
+p { margin: 0; }
+button { font: inherit; }
+
+/* ----------------------------------------------------------
+   2. Layout
+   ---------------------------------------------------------- */
+.container {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 0 var(--sp-4);
+}
+
+.section {
+  margin: var(--sp-6) 0;
+}
+
+.section-title,
+.section__title {
+  font-size: var(--t-foot);
+  font-weight: 400;
+  color: var(--label-2);
+  text-transform: none;
+  letter-spacing: 0.01em;
+  padding: 0 var(--sp-4) 6px;
+  margin: 0;
+}
+
+/* ----------------------------------------------------------
+   3. Home Hero — 极简
+   ---------------------------------------------------------- */
+.hero {
+  padding: calc(var(--sa-top) + var(--sp-7)) var(--sp-4) var(--sp-5);
+  max-width: 640px;
+  margin: 0 auto;
+  background: transparent;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  /* 极淡的暖色装饰，不做夸张视觉 */
+  content: "";
+  position: absolute;
+  top: -120px; right: -80px;
+  width: 320px; height: 320px;
+  background: radial-gradient(circle, rgba(255,122,69,0.18), transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+.hero-content { position: relative; z-index: 1; }
+.hero-overlay { display: none; }
+
+.hero-date,
+.hero__eyebrow {
+  display: inline-block;
+  font-size: var(--t-cap);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--orange-deep);
+  margin-bottom: var(--sp-3);
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-size: var(--t-large);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--label);
+  margin-bottom: 6px;
+  text-shadow: none;
+}
+
+.hero-subtitle {
+  font-size: var(--t-sub);
+  color: var(--label-2);
+  font-weight: 400;
+  max-width: 92%;
+}
+
+.hero-chips { display: none; }  /* 简化：用下方 stats 替代 */
+
+/* ----------------------------------------------------------
+   4. Stats row — 一行四列，无卡片
+   ---------------------------------------------------------- */
+.stats-bar {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  margin: 0 auto var(--sp-5);
+  padding: var(--sp-4) var(--sp-4);
+  max-width: 640px;
+  background: transparent;
+  box-shadow: none;
+  border: 0;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border-radius: 0;
+  position: static;
+}
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  position: relative;
+}
+.stat-item + .stat-item { padding-left: var(--sp-3); }
+.stat-item + .stat-item::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 20%; height: 60%;
+  width: 1px;
+  background: var(--separator);
+}
+.stat-value {
+  font-family: var(--font-display);
+  font-size: var(--t-t3);
+  font-weight: 700;
+  color: var(--label);
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+}
+.stat-label {
+  font-size: var(--t-cap);
+  color: var(--label-2);
+}
+
+/* ----------------------------------------------------------
+   5. Inset Grouped List — 通用容器
+   所有内容卡片（行程/攻略/景点/美食/酒店...）统一此结构
+   ---------------------------------------------------------- */
+.list,
+.itinerary,
+.route-info,
+.segments,
+.expense-table-wrapper,
+.budget-table-wrapper {
+  background: var(--bg-elev);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-1);
+  margin: 0 0 var(--sp-3);
+}
+
+/* Row 通用行 */
+.list__row {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  padding: 12px var(--sp-4);
+  position: relative;
+  min-height: 48px;
+  background: var(--bg-elev);
+  color: var(--label);
+}
+.list__row + .list__row::before,
+.list__row--indented + .list__row--indented::before {
+  content: "";
+  position: absolute;
+  left: var(--sp-4);
+  right: 0;
+  top: 0;
+  height: 0.5px;
+  background: var(--separator);
+}
+.list__content { flex: 1; min-width: 0; }
+.list__title {
+  font-size: var(--t-body);
+  color: var(--label);
+  line-height: 1.3;
+  font-weight: 400;
+}
+.list__sub {
+  font-size: var(--t-foot);
+  color: var(--label-2);
+  margin-top: 2px;
+  line-height: 1.4;
+}
+.list__meta {
+  font-size: var(--t-sub);
+  color: var(--label-2);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  flex-shrink: 0;
+  font-family: var(--font-display);
+  font-weight: 500;
+}
+.list__meta--accent { color: var(--orange-deep); font-weight: 600; }
+.list__leading {
+  width: 28px; height: 28px;
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 7px;
+  background: var(--orange-bg);
+  color: var(--orange-deep);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--t-foot);
+}
+
+/* 行为可点击 */
+a.list__row:active,
+.day-card:active,
+.nav-card:active { background: var(--fill-1); }
+
+/* 行之间的内缩分隔线（兼容 day-card / nav-card） */
+.day-card + .day-card::before {
+  content: "";
+  position: absolute;
+  left: 64px; right: 0; top: 0;
+  height: 0.5px;
+  background: var(--separator);
+}
+.nav-card + .nav-card::before {
+  content: "";
+  position: absolute;
+  left: 60px; right: 0; top: 0;
+  height: 0.5px;
+  background: var(--separator);
+}
+
+/* ----------------------------------------------------------
+   6. 行程总览
+   ---------------------------------------------------------- */
+.itinerary .section-title { display: none; }
+
+.day-card {
+  display: grid;
+  grid-template-columns: 40px 1fr auto;
+  align-items: center;
+  gap: var(--sp-3);
+  padding: 12px var(--sp-4);
+  background: var(--bg-elev);
+  color: var(--label);
+  position: relative;
+  min-height: 54px;
+  transition: background var(--dur-1);
+  border-radius: 0;
+  box-shadow: none;
+  margin: 0;
+}
+.day-card + .day-card::before {
+  content: "";
+  position: absolute;
+  left: 64px; right: 0; top: 0;
+  height: 0.5px;
+  background: var(--separator);
+}
+
+.day-badge {
+  width: 36px; height: 36px;
+  border-radius: var(--r-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--t-foot);
+  color: var(--orange-deep);
+  background: var(--orange-bg);
+  letter-spacing: -0.02em;
+  box-shadow: none;
+}
+
+.day-info { min-width: 0; }
+.day-title {
+  font-size: var(--t-headline);
+  font-weight: 500;
+  margin-bottom: 2px;
+  color: var(--label);
+}
+.day-route {
+  font-size: var(--t-foot);
+  color: var(--label-2);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 100%;
+}
+.day-desc { display: none; }
+
+.day-distance {
+  font-family: var(--font-display);
+  font-size: var(--t-foot);
+  font-weight: 500;
+  color: var(--label-2);
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+  background: transparent;
+  padding: 0;
+  border-radius: 0;
+}
+.day-distance::after {
+  content: "›";
+  margin-left: 6px;
+  color: var(--label-3);
+  font-weight: 400;
+  font-size: 16px;
+}
+
+/* ----------------------------------------------------------
+   7. 实用攻略 —— 改为单列 Inset Grouped List
+   ---------------------------------------------------------- */
+.nav-grid {
+  display: block;
+  background: var(--bg-elev);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-1);
+}
+
+.nav-card {
+  display: grid;
+  grid-template-columns: 32px 1fr auto;
+  gap: var(--sp-3);
+  padding: 12px var(--sp-4);
+  color: var(--label);
+  min-height: 56px;
+  flex-direction: row;
+  border-radius: 0;
+}
+.nav-card + .nav-card::before {
+  content: "";
+  position: absolute;
+  left: 60px; right: 0; top: 0;
+  height: 0.5px;
+  background: var(--separator);
+}
+.nav-icon {
+  width: 28px; height: 28px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 7px;
+  background: var(--orange-bg);
+  color: var(--orange-deep);
+  font-size: 16px;
+  margin: 0;
+}
+.nav-label {
+  font-size: var(--t-body);
+  font-weight: 400;
+  letter-spacing: -0.005em;
+  color: var(--label);
+  grid-column: 2;
+}
+.nav-hint {
+  display: none;  /* 简约：隐藏副标题 */
+}
+.nav-card::after {
+  content: "›";
+  color: var(--label-3);
+  font-size: 18px;
+  font-weight: 400;
+}
+
+/* ----------------------------------------------------------
+   8. Route Map（浅色简化）
+   ---------------------------------------------------------- */
+.route-map {
+  background: var(--bg-elev);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-1);
+}
+.route-map__svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.route-map__legend {
+  position: absolute;
+  top: 10px; right: 10px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 10px;
+  background: rgba(255,255,255,0.9);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border-radius: var(--r-pill);
+  color: var(--label-2);
+  font-size: var(--t-cap2);
+  font-weight: 500;
+  box-shadow: var(--shadow-1);
+}
+.route-map__dot {
+  display: inline-block;
+  width: 7px; height: 7px;
+  border-radius: 50%;
+}
+.route-map__dot + span { margin-right: 4px; }
+.route-map__dot--d3 { background: #F4B678; }
+.route-map__dot--d4 { background: #F28B4F; }
+.route-map__dot--d5 { background: var(--orange-deep); }
+.route-map__dot--d6 { background: var(--blue-pin); }
+.route-map__hint {
+  font-size: var(--t-foot);
+  color: var(--label-2);
+  text-align: center;
+  padding: 10px var(--sp-4) 12px;
+  background: var(--bg-elev);
+  margin: 0;
+  border-top: 0.5px solid var(--separator);
+}
+
+/* 将 .route-map 设为相对定位以便 legend 绝对定位 */
+.route-map { position: relative; }
+
+/* ----------------------------------------------------------
+   9. Segments list
+   ---------------------------------------------------------- */
+.segments { margin-top: var(--sp-3); }
+.segments__day {
+  border-bottom: 0.5px solid var(--separator);
+}
+.segments__day:last-of-type { border-bottom: 0; }
+.segments__day[open] .segments__summary::after {
+  transform: rotate(90deg);
+}
+.segments__summary {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 10px;
+  padding: 12px var(--sp-4);
+  cursor: pointer;
+  list-style: none;
+  position: relative;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+.segments__summary::-webkit-details-marker { display: none; }
+.segments__summary::after {
+  content: "›";
+  position: absolute;
+  right: 14px;
+  color: var(--label-3);
+  font-size: 18px;
+  transition: transform var(--dur-2) var(--ease);
+}
+.segments__badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px; height: 20px;
+  border-radius: 6px;
+  font-family: var(--font-display);
+  font-size: var(--t-cap);
+  font-weight: 700;
+  background: var(--orange-bg);
+  color: var(--orange-deep);
+}
+.segments__badge--d3,
+.segments__badge--d4,
+.segments__badge--d5 { background: var(--orange-bg); color: var(--orange-deep); }
+.segments__badge--d6 { background: var(--blue-pin-soft); color: #2E6CB3; }
+.segments__title {
+  font-size: var(--t-body);
+  font-weight: 500;
+  color: var(--label);
+}
+.segments__total {
+  font-family: var(--font-display);
+  font-size: var(--t-foot);
+  font-weight: 500;
+  color: var(--label-2);
+  margin-right: 18px;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+.segments__row {
+  display: grid;
+  grid-template-columns: auto auto 1fr auto;
+  align-items: center;
+  gap: 6px;
+  padding: 10px var(--sp-4) 10px 52px;
+  font-size: var(--t-sub);
+  color: var(--label);
+  position: relative;
+}
+.segments__row + .segments__row::before {
+  content: "";
+  position: absolute;
+  left: 52px; right: var(--sp-4); top: 0;
+  height: 0.5px;
+  background: var(--separator);
+}
+.segments__from,
+.segments__to { font-weight: 400; }
+.segments__arrow { color: var(--label-3); margin: 0 2px; font-weight: 400; }
+.segments__meta {
+  font-family: var(--font-display);
+  font-size: var(--t-foot);
+  font-weight: 500;
+  color: var(--label-2);
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+.segments__note {
+  padding: 10px var(--sp-4) 14px;
+  margin: 0;
+  font-size: var(--t-cap);
+  color: var(--label-3);
+  text-align: center;
+  border-top: 0.5px solid var(--separator);
+}
+
+/* ----------------------------------------------------------
+   10. Detail Page Hero — 简洁大标题
+   ---------------------------------------------------------- */
+.page-hero {
+  padding: calc(var(--sa-top) + var(--navbar-h) + var(--sp-4)) var(--sp-4) var(--sp-4);
+  max-width: 640px;
+  margin: 0 auto;
+  background: transparent;
+}
+.page-hero__day {
+  display: inline-block;
+  font-size: var(--t-cap);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--orange-deep);
+  background: transparent;
+  padding: 0;
+  margin-bottom: 6px;
+  border-radius: 0;
+}
+.page-hero__title {
+  font-family: var(--font-display);
+  font-size: var(--t-large);
+  font-weight: 700;
+  letter-spacing: -0.022em;
+  line-height: 1.08;
+  color: var(--label);
+  margin-bottom: 6px;
+}
+.page-hero__route {
+  font-size: var(--t-sub);
+  color: var(--label-2);
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px;
+  line-height: 1.5;
+}
+.page-hero__route-arrow {
+  color: var(--label-3);
+  font-weight: 400;
+  margin: 0 1px;
+}
+
+/* ----------------------------------------------------------
+   11. Nav Bar (sticky)
+   ---------------------------------------------------------- */
+.nav-bar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: calc(var(--navbar-h) + var(--sa-top));
+  padding-top: var(--sa-top);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(247, 245, 241, 0.80);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  z-index: 100;
+  border-bottom: 0.5px solid transparent;
+  transition: border-color var(--dur-2);
+}
+.nav-bar.is-scrolled {
+  border-bottom-color: var(--separator);
+}
+.nav-bar__back {
+  position: absolute;
+  left: var(--sp-3);
+  height: 32px;
+  padding: 0 10px 0 2px;
+  display: inline-flex;
+  align-items: center;
+  color: var(--orange-deep);
+  font-size: var(--t-body);
+  font-weight: 400;
+}
+.nav-bar__back::before {
+  content: "";
+  width: 9px; height: 9px;
+  border-left: 1.8px solid currentColor;
+  border-bottom: 1.8px solid currentColor;
+  transform: rotate(45deg);
+  margin-right: 5px;
+}
+.nav-bar__title {
+  font-size: var(--t-headline);
+  font-weight: 600;
+  color: var(--label);
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity var(--dur-2), transform var(--dur-2);
+}
+.nav-bar.is-scrolled .nav-bar__title {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ----------------------------------------------------------
+   12. Route Info grid
+   ---------------------------------------------------------- */
+.route-info {
+  padding: 0;
+  margin-bottom: var(--sp-5);
+}
+.route-info__title {
+  font-size: var(--t-foot);
+  font-weight: 400;
+  color: var(--label-2);
+  text-transform: none;
+  letter-spacing: 0.01em;
+  padding: 14px var(--sp-4) 6px;
+  margin: 0;
+  display: block;
+}
+.route-info__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  border-top: 0.5px solid var(--separator);
+}
+.route-info__item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px var(--sp-4);
+  border-bottom: 0.5px solid var(--separator);
+  position: relative;
+}
+.route-info__item:nth-child(odd)::after {
+  content: "";
+  position: absolute;
+  right: 0; top: 20%; height: 60%;
+  width: 0.5px;
+  background: var(--separator);
+}
+.route-info__item:nth-last-child(1),
+.route-info__item:nth-last-child(2):nth-child(odd) { border-bottom: 0; }
+.route-info__label {
+  font-size: var(--t-sub);
+  color: var(--label-2);
+}
+.route-info__value {
+  font-family: var(--font-display);
+  font-size: var(--t-sub);
+  font-weight: 500;
+  color: var(--label);
+  letter-spacing: -0.005em;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ----------------------------------------------------------
+   13. 统一卡片容器（景点/美食/酒店）
+   用连续白卡片堆叠 + 分割线，而非独立小卡
+   ---------------------------------------------------------- */
+.section > .attraction-card:first-of-type,
+.section > .food-card:first-of-type,
+.section > .hotel-card:first-of-type {
+  border-top-left-radius: var(--r-lg);
+  border-top-right-radius: var(--r-lg);
+  margin-top: 0;
+}
+.section > .attraction-card:last-of-type,
+.section > .food-card:last-of-type,
+.section > .hotel-card:last-of-type {
+  border-bottom-left-radius: var(--r-lg);
+  border-bottom-right-radius: var(--r-lg);
+  margin-bottom: var(--sp-5);
+}
+.attraction-card,
+.food-card,
+.hotel-card {
+  display: block;
+  background: var(--bg-elev);
+  box-shadow: none;
+  border-radius: 0;
+  padding: 0;
+  margin: 0;
+  position: relative;
+  min-height: 0;
+}
+.section > .attraction-card + .attraction-card,
+.section > .food-card + .food-card,
+.section > .hotel-card + .hotel-card {
+  border-top: 0.5px solid var(--separator);
+}
+.section > .attraction-card:first-of-type,
+.section > .food-card:first-of-type,
+.section > .hotel-card:first-of-type {
+  box-shadow: var(--shadow-1);
+}
+.section > .attraction-card:not(:first-of-type),
+.section > .food-card:not(:first-of-type),
+.section > .hotel-card:not(:first-of-type) {
+  box-shadow: var(--shadow-1);  /* 轻阴影只施加于整组 */
+  border-top: 0.5px solid var(--separator);
+}
+/* 使用 :not + grouping：一组卡片共用阴影 —— 但由于 box-shadow 叠加问题，改用上下贴合 */
+.attraction-card + .attraction-card,
+.food-card + .food-card,
+.hotel-card + .hotel-card {
+  margin-top: 0;
+}
+
+.attraction-card__body,
+.food-card__body,
+.hotel-card__body {
+  padding: 14px var(--sp-4);
+}
+.attraction-card__name,
+.food-card__name,
+.hotel-card__name {
+  font-family: var(--font-display);
+  font-size: var(--t-headline);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--label);
+  margin-bottom: 4px;
+}
+.attraction-card__detail,
+.food-card__shop,
+.food-card__price,
+.hotel-card__location {
+  font-size: var(--t-sub);
+  color: var(--label-2);
+  display: block;
+  margin-top: 2px;
+}
+.attraction-card__detail::before,
+.food-card__shop::before,
+.food-card__price::before,
+.hotel-card__location::before {
+  display: none;  /* 去图标，极简 */
+}
+.attraction-card__detail--ticket::before { display: inline; content: "门票 "; color: var(--label-3); }
+.attraction-card__detail--time::before { display: inline; content: "用时 "; color: var(--label-3); }
+.attraction-card__detail--tip::before { display: inline; content: "提示 "; color: var(--label-3); }
+.food-card__shop::before { display: inline; content: ""; }
+.food-card__price::before { display: inline; content: "人均 "; color: var(--label-3); }
+.hotel-card__location::before { display: inline; content: ""; }
+.attraction-card__detail,
+.food-card__price,
+.food-card__shop,
+.hotel-card__location {
+  padding-left: 0;
+  background: none;
+  mask: none;
+  -webkit-mask: none;
+}
+
+.attraction-card__desc,
+.food-card__desc,
+.hotel-card__desc {
+  font-size: var(--t-sub);
+  color: var(--label);
+  line-height: 1.55;
+  margin-top: 8px;
+}
+
+.hotel-card__price {
+  font-family: var(--font-display);
+  font-size: var(--t-t3);
+  font-weight: 600;
+  color: var(--label);
+  margin-top: 8px;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.01em;
+}
+.hotel-card__price-unit {
+  font-size: var(--t-foot);
+  font-weight: 400;
+  color: var(--label-2);
+  margin-left: 4px;
+}
+.hotel-card__amenities {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 8px;
+}
+.hotel-card__amenities span {
+  font-size: var(--t-cap);
+  padding: 2px 8px;
+  background: var(--fill-1);
+  color: var(--label-2);
+  border-radius: var(--r-pill);
+  font-weight: 400;
+}
+
+/* ----------------------------------------------------------
+   14. Tags — 单一极简胶囊
+   ---------------------------------------------------------- */
+.tag {
+  display: inline-flex;
+  align-items: center;
+  font-size: var(--t-cap);
+  font-weight: 500;
+  padding: 2px 8px;
+  border-radius: var(--r-pill);
+  background: var(--fill-1);
+  color: var(--label-2);
+  letter-spacing: 0;
+}
+.tag--success,
+.tag--gold,
+.tag--ochre,
+.tag--danger,
+.tag--info,
+.tag--default {
+  background: var(--fill-1);
+  color: var(--label-2);
+}
+/* 仅"必去/推荐"这种强调色使用橙 */
+.tag--gold { background: var(--orange-bg); color: var(--orange-deep); }
+
+/* ----------------------------------------------------------
+   15. Timeline — 极简行
+   ---------------------------------------------------------- */
+.timeline {
+  background: var(--bg-elev);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-1);
+  overflow: hidden;
+  margin: 0 0 var(--sp-4);
+  padding: 0;
+  position: static;
+}
+.timeline::before { display: none; }
+.timeline__step {
+  position: relative;
+  padding: 12px var(--sp-4);
+  margin: 0;
+  background: transparent;
+  box-shadow: none;
+  border-radius: 0;
+  border: 0;
+}
+.timeline__step::before { display: none; }
+.timeline__step + .timeline__step {
+  border-top: 0.5px solid var(--separator);
+}
+.timeline__step--highlight {
+  background: transparent;
+  border: 0;
+}
+.timeline__time {
+  font-family: var(--font-display);
+  font-size: var(--t-foot);
+  font-weight: 500;
+  color: var(--orange-deep);
+  letter-spacing: 0.01em;
+  text-transform: none;
+  font-variant-numeric: tabular-nums;
+  margin-bottom: 2px;
+}
+.timeline__title {
+  font-family: var(--font-display);
+  font-size: var(--t-body);
+  font-weight: 500;
+  color: var(--label);
+  margin-bottom: 2px;
+}
+.timeline__desc {
+  font-size: var(--t-sub);
+  color: var(--label-2);
+  line-height: 1.5;
+}
+
+/* ----------------------------------------------------------
+   16. Tip box — 统一浅橙
+   ---------------------------------------------------------- */
+.tip-box {
+  position: relative;
+  background: var(--bg-elev);
+  border: 0;
+  border-left: 0;
+  border-radius: var(--r-lg);
+  padding: 12px 14px 12px 42px;
+  font-size: var(--t-sub);
+  line-height: 1.55;
+  color: var(--label);
+  box-shadow: var(--shadow-1);
+  margin-bottom: var(--sp-2);
+}
+.tip-box::before {
+  content: "i";
+  position: absolute;
+  left: 14px; top: 12px;
+  width: 18px; height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 700;
+  color: #FFF;
+  background: var(--label-3);
+  border-radius: 50%;
+  mask: none;
+  -webkit-mask: none;
+}
+.tip-box__title {
+  display: block;
+  font-weight: 500;
+  font-size: var(--t-sub);
+  color: var(--label);
+  margin-bottom: 2px;
+}
+.tip-box--info::before    { background: var(--blue-pin); }
+.tip-box--warning::before { background: #D88A2A; content: "!"; }
+.tip-box--danger::before  { background: #D93F3F; content: "!"; }
+.tip-box--success::before { background: #3F9A4F; content: "✓"; font-size: 10px; }
+.tip-box--money::before   { background: var(--orange); content: "¥"; }
+
+/* tip-box 内列表 */
+.tip-box ul {
+  margin: 6px 0 0;
+  padding-left: 18px;
+  font-size: var(--t-sub);
+  color: var(--label);
+  line-height: 1.6;
+}
+.tip-box ul li { margin-bottom: 2px; }
+.tip-box ul li strong { font-weight: 600; color: var(--orange-deep); }
+
+/* ----------------------------------------------------------
+   17. Expense / Budget table
+   ---------------------------------------------------------- */
+.expense-table-wrapper,
+.budget-table-wrapper {
+  padding: 0;
+  margin: 0 0 var(--sp-3);
+}
+.expense-table,
+.budget-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--t-sub);
+  color: var(--label);
+}
+.expense-table thead,
+.budget-table thead { display: none; }
+.expense-table th, .expense-table td,
+.budget-table th, .budget-table td {
+  padding: 12px var(--sp-4);
+  text-align: left;
+  border: 0;
+  border-bottom: 0.5px solid var(--separator);
+}
+.expense-table td:nth-child(1) { width: 40%; color: var(--label); font-weight: 400; }
+.expense-table td:nth-child(2) { text-align: right; }
+.expense-table td:nth-child(3) {
+  display: none;
+}
+.budget-table td:first-child { color: var(--label); font-weight: 400; }
+.budget-table td:not(:first-child) { text-align: right; font-family: var(--font-display); font-variant-numeric: tabular-nums; color: var(--label-2); }
+.budget-table td strong { font-weight: 600; color: var(--label); }
+.expense-table tr:last-child td,
+.budget-table tr:last-child td { border-bottom: 0; }
+.expense-table__amount {
+  font-family: var(--font-display);
+  font-weight: 500;
+  color: var(--label);
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+.expense-table .total-row td,
+.budget-table .total-row td,
+.budget-table .subtotal-row td {
+  background: var(--orange-bg);
+  font-weight: 600;
+  color: var(--label);
+}
+.expense-table .total-row .expense-table__amount,
+.budget-table .total-row .expense-table__amount {
+  font-size: var(--t-headline);
+  color: var(--orange-deep);
+  font-weight: 700;
+}
+.budget-table .subtotal-row .expense-table__amount {
+  color: var(--orange-deep);
+  font-weight: 600;
+}
+
+/* Budget summary cards */
+.budget-summary {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sp-3);
+  margin-bottom: var(--sp-3);
+}
+.budget-summary__card {
+  background: var(--bg-elev);
+  border-radius: var(--r-lg);
+  padding: var(--sp-4);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  box-shadow: var(--shadow-1);
+}
+.budget-summary__card--total {
+  grid-column: 1 / -1;
+  background: var(--orange-bg);
+}
+.budget-summary__value {
+  font-family: var(--font-display);
+  font-size: var(--t-t3);
+  font-weight: 700;
+  color: var(--label);
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+}
+.budget-summary__card--total .budget-summary__value {
+  color: var(--orange-deep);
+  font-size: var(--t-t2);
+}
+.budget-summary__label {
+  font-size: var(--t-foot);
+  color: var(--label-2);
+}
+
+/* ----------------------------------------------------------
+   18. Day Nav
+   ---------------------------------------------------------- */
+.day-nav {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sp-3);
+  margin: var(--sp-6) 0 var(--sp-5);
+}
+.day-nav__link {
+  padding: 12px var(--sp-4);
+  background: var(--bg-elev);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-1);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.day-nav__link--next { text-align: right; align-items: flex-end; }
+.day-nav__label {
+  font-size: var(--t-cap);
+  color: var(--orange-deep);
+  font-weight: 500;
+}
+.day-nav__title {
+  font-size: var(--t-sub);
+  color: var(--label);
+  font-weight: 500;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 100%;
+}
+
+/* ----------------------------------------------------------
+   19. Footer
+   ---------------------------------------------------------- */
+.footer,
+.site-footer {
+  text-align: center;
+  padding: var(--sp-5) var(--sp-4) var(--sp-6);
+  color: var(--label-3);
+  font-size: var(--t-cap);
+}
+.footer-brand,
+.site-footer__brand {
+  font-weight: 500;
+  color: var(--label-2);
+  margin-bottom: 4px;
+}
+.footer-note { font-size: var(--t-cap2); }
+.site-footer__divider { display: none; }
+
+/* ----------------------------------------------------------
+   20. Bottom Tab Bar
+   ---------------------------------------------------------- */
+.bottom-nav {
+  position: fixed;
+  left: 0; right: 0; bottom: 0;
+  display: flex;
+  justify-content: space-around;
+  padding: 6px 8px calc(6px + var(--sa-bottom));
+  background: rgba(247, 245, 241, 0.85);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-top: 0.5px solid var(--separator);
+  z-index: 90;
+}
+.bottom-nav-item,
+.bottom-nav__item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  padding: 5px 4px 4px;
+  color: var(--label-2);
+  font-size: var(--t-cap2);
+  font-weight: 500;
+  min-width: 0;
+}
+.bottom-nav-item.active,
+.bottom-nav__item.active { color: var(--orange-deep); }
+
+.bottom-nav-icon,
+.bottom-nav__item::before {
+  width: 24px; height: 24px;
+  display: block;
+  background: currentColor;
+  mask-size: contain;
+  mask-repeat: no-repeat;
+  mask-position: center;
+  -webkit-mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+}
+.bottom-nav-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  line-height: 1;
+  background: transparent;
+}
+
+.bottom-nav__item--home::before {
+  content: "";
+  -webkit-mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='black'><path d='M12 3.2 3 10v10.8h6v-6h6v6h6V10Z'/></svg>");
+          mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='black'><path d='M12 3.2 3 10v10.8h6v-6h6v6h6V10Z'/></svg>");
+}
+.bottom-nav__item--food::before {
+  content: "";
+  -webkit-mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='black'><path d='M5 2v8a3 3 0 0 0 2 2.8V22h2V12.8A3 3 0 0 0 11 10V2H9v6H8V2H6v6H5V2Zm11 0c-2 0-3 2-3 5v3a2 2 0 0 0 2 2v10h2V12a2 2 0 0 0 2-2V7c0-3-1-5-3-5Z'/></svg>");
+          mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='black'><path d='M5 2v8a3 3 0 0 0 2 2.8V22h2V12.8A3 3 0 0 0 11 10V2H9v6H8V2H6v6H5V2Zm11 0c-2 0-3 2-3 5v3a2 2 0 0 0 2 2v10h2V12a2 2 0 0 0 2-2V7c0-3-1-5-3-5Z'/></svg>");
+}
+.bottom-nav__item--route::before,
+.bottom-nav__item--driving::before {
+  content: "";
+  -webkit-mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='black'><path d='M5 11l2-5a2 2 0 0 1 1.9-1.3h6.2A2 2 0 0 1 17 6l2 5h.5A1.5 1.5 0 0 1 21 12.5V18a1 1 0 0 1-1 1h-1a1 1 0 0 1-1-1v-1H6v1a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-5.5A1.5 1.5 0 0 1 4.5 11Zm2.3 0h9.4l-1.3-3.3a.7.7 0 0 0-.7-.5H9.3a.7.7 0 0 0-.7.5ZM7 15.5A1.5 1.5 0 1 0 7 12.5a1.5 1.5 0 0 0 0 3Zm10 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z'/></svg>");
+          mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='black'><path d='M5 11l2-5a2 2 0 0 1 1.9-1.3h6.2A2 2 0 0 1 17 6l2 5h.5A1.5 1.5 0 0 1 21 12.5V18a1 1 0 0 1-1 1h-1a1 1 0 0 1-1-1v-1H6v1a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-5.5A1.5 1.5 0 0 1 4.5 11Zm2.3 0h9.4l-1.3-3.3a.7.7 0 0 0-.7-.5H9.3a.7.7 0 0 0-.7.5ZM7 15.5A1.5 1.5 0 1 0 7 12.5a1.5 1.5 0 0 0 0 3Zm10 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z'/></svg>");
+}
+.bottom-nav__item--budget::before {
+  content: "";
+  -webkit-mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='black'><path d='M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm1 14.9V18h-2v-1.1a4 4 0 0 1-3-3.9h2a2 2 0 1 0 2-2 4 4 0 0 1-1-7.9V2h2v1.1a4 4 0 0 1 3 3.9h-2a2 2 0 1 0-2 2 4 4 0 0 1 1 7.9Z'/></svg>");
+          mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='black'><path d='M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm1 14.9V18h-2v-1.1a4 4 0 0 1-3-3.9h2a2 2 0 1 0 2-2 4 4 0 0 1-1-7.9V2h2v1.1a4 4 0 0 1 3 3.9h-2a2 2 0 1 0-2 2 4 4 0 0 1 1 7.9Z'/></svg>");
+}
+.bottom-nav__item--tips::before {
+  content: "";
+  -webkit-mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='black'><path d='M12 2 1 21h22Zm0 7 6.5 11h-13Zm-1 4v4h2v-4Zm0 5v2h2v-2Z'/></svg>");
+          mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='black'><path d='M12 2 1 21h22Zm0 7 6.5 11h-13Zm-1 4v4h2v-4Zm0 5v2h2v-2Z'/></svg>");
+}
+
+/* ----------------------------------------------------------
+   21. Guide cards (deprecated but retained)
+   ---------------------------------------------------------- */
+.guide-scroller,
+.guide-card { display: none; }
+
+/* ----------------------------------------------------------
+   22. Utilities
+   ---------------------------------------------------------- */
+.flex { display: flex; }
+.flex-wrap { flex-wrap: wrap; }
+.gap-2 { gap: 8px; }
+.gap-3 { gap: 12px; }
+.mt-2 { margin-top: 8px; } .mt-3 { margin-top: 12px; }
+.mt-4 { margin-top: 16px; } .mt-6 { margin-top: 24px; }
+.mb-2 { margin-bottom: 8px; } .mb-3 { margin-bottom: 12px; }
+.mb-4 { margin-bottom: 16px; } .mb-6 { margin-bottom: 24px; }
+.text-center { text-align: center; }
+
+/* ----------------------------------------------------------
+   23. Dark mode (保持简约)
+   ---------------------------------------------------------- */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --label:    #F2EDE4;
+    --label-2:  rgba(235, 227, 213, 0.58);
+    --label-3:  rgba(235, 227, 213, 0.36);
+    --label-4:  rgba(235, 227, 213, 0.18);
+    --bg:       #000000;
+    --bg-elev:  #1C1917;
+    --bg-grouped: #0E0C0B;
+    --separator:rgba(235, 227, 213, 0.12);
+    --fill-1:   rgba(255, 255, 255, 0.06);
+    --orange-bg:rgba(255, 122, 69, 0.14);
+  }
+  .nav-bar    { background: rgba(0, 0, 0, 0.72); }
+  .bottom-nav { background: rgba(22, 20, 18, 0.85); }
+}
